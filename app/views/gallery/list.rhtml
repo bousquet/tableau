@@ -1,0 +1,17 @@
+<div id="photos">
+  <%= render :partial=>"photo", :collection=>@photos %>
+</div>
+
+<h2>Albums</h2>
+<ul id="albums">
+  <%= content_tag "li", link_to("&laquo; Back to gallery", :controller=>"gallery", :action=>"index") if current_page?(:controller=>"gallery", :action=>"album") %>
+  <% @albums.each do |album| %>
+    <li id="album_<%= album.id %>"><%= render(:partial=>"album", :locals=>{"album"=>album}) %></li>
+    <%= drop_receiving_element "album_#{album.id}", 
+          :update => "album_#{album.id}", :url => { :controller=>"albums", :action=>"add_photo", :album_id=>album },
+          :accept => "photo", :hoverclass => "album-active",
+          :loading => "Element.show('album_spinner')",
+          :complete => "Element.hide('album_spinner')" if logged_in? %>
+  <% end %>
+</ul>
+<div id="album_spinner" style="display:none;clear:both"><%= image_tag "spinner.gif", :style=>"vertical-align:middle" %> Adding photo to album...</div>

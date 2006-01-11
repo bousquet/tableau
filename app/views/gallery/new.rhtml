@@ -1,0 +1,13 @@
+<h2>New Photo</h2>
+
+<%= error_messages_for "photo" %>
+
+<%= start_form_tag nil, :multipart=>true %>
+<fieldset>
+  <label>Title</label>
+  <%= text_field "photo", "title" %>
+  <label>Photo</label>
+  <%= file_field_tag "file" %>
+  <label>&nbsp;</label>
+  <%= submit_tag "Upload" %>
+</fieldset>

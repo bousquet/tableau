@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Gallery</title>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag "lightbox" %>
+    <%= stylesheet_link_tag "gallery" %>
+  </head>
+  <body>
+    <div id="page">
+      <p style="float:right"><%= logged_in? ? @curuser.login + link_to("Logout", :controller=>"account", :action=>"logout") : link_to("Login", :controller=>"account", :action=>"login") %></p>
+      <h1><%= link_to "Gallery Title", :controller=>"gallery", :action=>"index" %><%= " > "+ @album.title if @album and @album.title %></h1>
+      <% if logged_in? %>
+      <ul>
+        <li><%= link_to "New Photo", :action=>"new" %></li>
+        <li><%= link_to "New Album", :controller=>"albums", :action=>"new" %></li>
+      </ul>
+      <% end %>
+      <%= @content_for_layout %>
+      <div style="clear:both"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+<% rel = logged_in? ? "nil" : "lightbox" %>
+<% url = logged_in? ? "#" : photo.to_url(:large) %>
+<%= link_to image_tag(photo.to_url(:thumbnail), :class=>"photo", :id=>"photo_#{photo.id}"), url, :rel=>rel %>
+<%= draggable_element "photo_#{photo.id}", :revert => true if logged_in? %>

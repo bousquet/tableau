@@ -1,0 +1,90 @@
+body {
+	background-color: #888;
+	font-family: Lucida Grande;
+	font-size: 11px;
+	margin:25px;
+}
+
+h1 {
+	color:#333;
+	margin-top:0;
+}
+
+h1 a {
+	color:#000;
+	text-decoration:none;
+}
+
+h2 {
+	margin:2em 0 0 0;
+}
+
+#page {
+	margin: 0;
+	margin-bottom: 10px;
+	background-color: #eee;
+	border: 5px solid #333;
+	padding: 25px;
+}
+
+fieldset {
+	border: none;
+}
+
+label {
+	display:block;
+	font-weight:bold;
+}
+
+#spinner {
+	float: right;
+	margin: 10px;
+}
+
+#photos img {
+	border: 1px solid #000;
+	width: 75px;
+	height: 75px;
+	margin: 5px;
+}
+
+#albums {
+	margin:1em 0 0 0;
+	padding:0;
+	float:left;
+	clear:both;
+}
+
+#albums li {
+	float:left;
+	margin:5px 5px 5px 0;
+	padding:5px;
+	background:#666;
+	list-style-type:none;
+}
+
+#albums li a {
+	color:#FFF;
+	text-decoration:none;
+	display:block;
+}
+
+.album-active {
+	background:#000 !important;
+}
+
+#lightbox{
+	background-color:#eee;
+	padding: 10px;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+}
+
+#overlay{ background-image: url(../images/overlay.png); }
+
+* html #overlay{
+	background-color: #000;
+	back\ground-color: transparent;
+	background-image: url(../images/blank.gif);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/overlay.png", sizingMethod="scale");
+}
