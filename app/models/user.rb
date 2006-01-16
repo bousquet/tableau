@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :salt
   validates_length_of       :login,    :within => 3..40
   validates_length_of       :email,    :within => 3..100
-  validates_length_of       :password, :within => 5..40, :if => :password_required?
+  validates_length_of       :password, :within => 4..40, :if => :password_required?
   validates_presence_of     :login, :email
   validates_presence_of     :password, 
                             :password_confirmation,
@@ -63,6 +63,14 @@ class User < ActiveRecord::Base
   # Encrypts the password with the user salt
   def encrypt(password)
     self.class.encrypt(password, salt)
+  end
+  
+  def full_name
+    self.first + " " + self.last
+  end
+  
+  def is_admin?
+    false
   end
 
   # More extra credit for adding 2-way encryption.  Feel free to remove self.encrypt above if you use this

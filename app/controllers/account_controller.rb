@@ -16,7 +16,8 @@ class AccountController < ApplicationController
 
   def login
     return unless request.post?
-    self.current_user = User.authenticate(params[:login], params[:password])
+    @user = User.new(params[:user])
+    self.current_user = User.authenticate(@user.login, @user.password)
     if current_user
       redirect_back_or_default(:controller => 'gallery', :action => 'index')
       flash[:notice] = "Logged in successfully"

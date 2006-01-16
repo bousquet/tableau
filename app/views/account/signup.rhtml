@@ -1,15 +1,26 @@
 <%= start_form_tag %>
-<p><label for="login">Login</label><br/>
-<%= text_field 'user', 'login' %></p>
+<div id="login">
 
-<p><label for="email">Email</label><br/>
-<%= text_field 'user', 'email' %></p>
+<label for="login">First</label>
+<%= text_field :user, :first %>
 
-<p><label for="password">Password</label><br/>
-<%= password_field 'user', 'password' %></p>
+<label for="login">Last</label>
+<%= text_field :user, :last %>
 
-<p><label for="password_confirmation">Confirm Password</label><br/>
-<%= password_field 'user', 'password_confirmation' %></p>
+<label for="login">Login</label>
+<%= text_field :user, :login %>
 
-<p><%= submit_tag 'Sign up' %></p>
+<label for="email">Email</label>
+<%= text_field :user, :email %>
+
+<label for="password">Password</label>
+<%= password_field :user, :password %>
+
+<label for="password_confirmation">Confirm Password</label>
+<%= password_field :user, :password_confirmation %>
+
+<label>&nbsp;</label>
+<%= submit_tag 'Sign up' %>
+</div>
+
 <%= end_form_tag %>

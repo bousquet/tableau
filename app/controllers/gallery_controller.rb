@@ -1,6 +1,6 @@
 class GalleryController < ApplicationController
 
-  before_filter :login_required, :except => [:album,:list,:index]
+  before_filter :login_required, :except => [:index, :list, :album]
   
   def index
     list

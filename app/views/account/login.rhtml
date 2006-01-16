@@ -1,9 +1,11 @@
 <%= start_form_tag %>
-<p><label for="login">Login</label><br/>
-<%= text_field_tag 'login' %></p>
-
-<p><label for="password">Password</label><br/>
-<%= password_field_tag 'password' %></p>
-
-<p><%= submit_tag 'Log in' %></p>
+<div id="login">
+	<label for="user_login">Login</label>
+	<%= text_field :user, :login %>
+	<label for="user_password">Password</label>
+	<%= password_field :user, :password %>
+	<label>&nbsp;</label>
+	<p id="signup_link"><%= link_to "Create an account", :controller=>"account", :action=>"signup" %></p>
+	<%= submit_tag 'Log in' %>
+</div>
 <%= end_form_tag %>
