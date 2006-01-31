@@ -67,9 +67,10 @@ label {
 	margin: 0 10px 10px 0;
 }
 
-#albums, #admin {
+#albums, #admin, #recent_posts {
 	float:left;
 	clear:left;
+	width: 210px;
 }
 
 #albums ul, #admin ul {
@@ -127,16 +128,27 @@ label {
 	padding: 10px;
 	border-bottom: 2px solid #666;
 	border-right: 2px solid #666;
-}
+	}
+#lightboxDetails{
+	font-size: 0.8em;
+	padding-top: 0.4em;
+	}	
+#lightboxCaption{ float: left; }
+#keyboardMsg{ float: right; }
+#closeButton{ top: 5px; right: 5px; }
+
+#lightbox img{ border: none; clear: both;} 
+#overlay img{ border: none; }
 
 #overlay{ background-image: url(../images/overlay.png); }
 
 * html #overlay{
-	background-color: #000;
+	background-color: #333;
 	back\ground-color: transparent;
 	background-image: url(../images/blank.gif);
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/overlay.png", sizingMethod="scale");
-}
+	}
+
 
 #login {
 	position:absolute;

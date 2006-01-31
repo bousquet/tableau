@@ -1,4 +1,4 @@
+<h1><%= link_to "Photos", :controller=>"gallery", :action=>"index" %><%= " &raquo; "+ @album.title if @album and @album.title %></h1>
 <div id="photos">
-	<h1><%= link_to "Photos", :controller=>"gallery", :action=>"index" %><%= " &raquo; "+ @album.title if @album and @album.title %></h1>
   <%= render :partial=>"photo", :collection=>@photos %>
 </div>

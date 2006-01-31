@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(:version => 2) do
     t.column "activated_at", :datetime
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
-    t.column "first", :string, :default => ""
-    t.column "last", :string, :default => ""
+    t.column "first", :string
+    t.column "last", :string
   end
 
 end

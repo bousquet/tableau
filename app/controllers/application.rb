@@ -3,8 +3,8 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
-  
   before_filter :load_curuser
+  
   
   protected
   

@@ -11,10 +11,12 @@ class AccountController < ApplicationController
 
   # say something nice, you goof!  something sweet.
   def index
-    redirect_to(:action => 'signup') unless logged_in? or User.count > 0
+    login
+    render :action=>"login"
   end
 
   def login
+    redirect_to(:action => 'signup') and return unless User.count > 0
     return unless request.post?
     @user = User.new(params[:user])
     self.current_user = User.authenticate(@user.login, @user.password)
@@ -25,6 +27,7 @@ class AccountController < ApplicationController
   end
 
   def signup
+    redirect_to(:action=>"login") and return unless logged_in? or User.count < 1
     @user = User.new(params[:user])
     return unless request.post?
     if @user.save

@@ -1,6 +1,6 @@
 <%= render :partial=>"layouts/header" %>
 	
-	  <p><%= logged_in? ? @curuser.full_name+" "+link_to("Logout", :controller=>"account", :action=>"logout") : link_to("Login", :controller=>"account", :action=>"login") %></p>
+	  <!--p><%= logged_in? ? @curuser.full_name+" "+link_to("Logout", :controller=>"account", :action=>"logout") : link_to("Login", :controller=>"account", :action=>"login") %></p-->
   
     <div id="page">
 			
@@ -9,8 +9,15 @@
 					<h2>Admin</h2>
 					<ul>
 		        <li><%= link_to image_tag("image_add")+" New Photo", :controller=>"gallery", :action=>"new" %></li>
-		        <li><%= link_to image_tag("images")+" New Album", :controller=>"albums", :action=>"new" %></li>
+						<li id="image_destroy"><%= link_to image_tag("trash.gif")+" Delete Photo", "#" %></li>
+		        <%= drop_receiving_element "image_destroy", 
+				          :update => "photos", :url => { :controller=>"gallery", :action=>"destroy" },
+				          :accept => "photo", :hoverclass => "image_destroy_active",
+				          :loading => "Element.show('image_destroy_spinner')",
+				          :complete => "Element.hide('image_destroy_spinner')" if logged_in? %>
+						<li><%= link_to image_tag("images")+" New Album", :controller=>"albums", :action=>"new" %></li>
 		      </ul>
+					<div id="image_destroy_spinner" style="display:none;clear:both"><%= image_tag "spinner.gif", :style=>"vertical-align:middle" %> Deleting Photo...</div>
 				</div>
       <% end %>
 
@@ -30,15 +37,15 @@
 				<div id="album_spinner" style="display:none;clear:both"><%= image_tag "spinner.gif", :style=>"vertical-align:middle" %> Adding photo to album...</div>	
 			</div>
 
-			<!--div id="recent_posts">
+			<div id="recent_posts">
 				<h2>Recent Posts</h2>
 				<ul>
-					<li><%= link_to "Alyssa's Second Birthday", "#" %></li>
-					<li><%= link_to "Alyssa's Second Birthday", "#" %></li>
-					<li><%= link_to "Alyssa's Second Birthday", "#" %></li>
-					<li><%= link_to "Alyssa's Second Birthday", "#" %></li>
+					<li><%= link_to "Aquarium 2006", "#" %></li>
+					<li><%= link_to "New Job 2006", "#" %></li>
+					<li><%= link_to "Christmas 2005", "#" %></li>
+					<li><%= link_to "Birthday 2005", "#" %></li>
 				</ul>
-			</div-->
+			</div>
       <%= @content_for_layout %>
       <div style="clear:both"></div>
     </div>

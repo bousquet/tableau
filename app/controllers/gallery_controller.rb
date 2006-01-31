@@ -44,8 +44,9 @@ class GalleryController < ApplicationController
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
+    @photo = Photo.find(params[:id].split("_")[1])
     @photo.destroy
-    redirect_to :action => 'list'
+    @photos = Photo.find :all
+    render :partial=>"gallery/photo", :collection=>@photos
   end
 end

@@ -1,8 +1,8 @@
 class AddUserNames < ActiveRecord::Migration
   def self.up
     STDERR.puts "Adding first and last names to users table"
-    add_column :users, :first, :string, :default=>""
-    add_column :users, :last, :string, :default=>""
+    add_column :users, :first, :string
+    add_column :users, :last, :string
   end
 
   def self.down
