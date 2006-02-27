@@ -1,7 +1,10 @@
-<%= start_form_tag %>
-<fieldset>
-  <label for="album_title">Title</label>
-  <%= text_field "album", "title" %>
-  <label>&nbsp;</label>
-  <%= submit_tag "Save" %>
-</fieldset>
+<h1>New Album</h1>
+<div id="photos">
+	<%= error_messages_for "album" %>
+	<%= start_form_tag %>
+	  <label for="album_title">Title</label>
+	  <%= text_field "album", "title" %>
+	  <label>&nbsp;</label>
+	  <%= submit_tag "Save" %> <%= link_to "Cancel", :controller=>"gallery", :action=>"list" %>
+	<%= end_form_tag %>
+</div>

@@ -1,5 +1,5 @@
 body {
-	background:#CCC url(../images/logo.gif) no-repeat top right;
+	background:#CCC;
 	font-family: 'Lucida Grande';
 	font-size: 11px;
 	margin:25px;
@@ -58,7 +58,7 @@ label {
 
 
 
-#photos {
+#photos, h1 {
 	margin-left:230px;
 }
 
@@ -90,7 +90,7 @@ label {
 	vertical-align:middle;
 }
 
-#albums a, #admin a {
+#albums a, #admin a, #image_destroy a {
 	color:#FFF;
 	padding:5px;
 	text-decoration:none;
@@ -105,21 +105,14 @@ label {
 	background:#000 !important;
 }
 
-#recent_posts {
-	float:left;
-	clear:left;
-	width:200px;
+#image_destroy a:hover {
+	background-color: #900;
 }
 
-#recent_posts ul {
-	margin:0;
-	padding:0;
+.image_destroy_active {
+	background:#900 !important;
 }
 
-#recent_posts ul li {
-	list-style-type:none;
-	margin:2px 0;
-}
 
 
 
@@ -161,5 +154,60 @@ label {
 }
 
 #signup_link {
-	float:right;
+	text-align:right;
+}
+
+#footer {
+	margin-top:100px;
+	text-align:center;
+}
+
+#login_link a {
+	color:#333;
+}
+
+#login_link a:hover {
+	background:none;
+}
+
+.fieldWithErrors  {
+  border-left:6px solid #900;
+  padding-left:2px;
+}
+
+
+.fieldWithErrors+label {
+  margin-top:0;
+}
+
+
+#errorExplanation {
+	width:100%;
+	margin:10px 0 20px;
+  	background:#FCC;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: .25em .25em .25em 35px;
+  font-size: 12px;
+  background:#C66 url(../images/alert.gif) no-repeat 10px 50%;
+  color: #fff;
+  border-top:3px solid #900;
+  border-bottom:3px solid #900;
+  margin-top:0;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: .5em 1em;
+  font-size:11px;
+  font-weight:bold;
+}
+
+#errorExplanation ul {
+	margin-left:30px;
+	padding:0 0 20px;
 }

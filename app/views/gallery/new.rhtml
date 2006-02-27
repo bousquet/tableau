@@ -1,13 +1,14 @@
-<h2>New Photo</h2>
+<h1>New Photo</h1>
 
+<div id="photos">
 <%= error_messages_for "photo" %>
 
 <%= start_form_tag nil, :multipart=>true %>
-<fieldset>
   <label>Title</label>
   <%= text_field "photo", "title" %>
   <label>Photo</label>
   <%= file_field_tag "file" %>
   <label>&nbsp;</label>
-  <%= submit_tag "Upload" %>
-</fieldset>
+  <%= submit_tag "Upload" %> <%= link_to "Cancel", :controller=>"gallery", :action=>"list" %>
+<%= end_form_tag %>
+</div>

@@ -1,6 +1,8 @@
 <%= start_form_tag %>
 <div id="login">
 
+<%= error_messages_for "user" %>
+
 <label for="login">First</label>
 <%= text_field :user, :first %>
 
@@ -20,7 +22,7 @@
 <%= password_field :user, :password_confirmation %>
 
 <label>&nbsp;</label>
-<%= submit_tag 'Sign up' %>
+<%= submit_tag 'Sign up' %> <%= link_to "Cancel", :controller=>"gallery", :action=>"list" %>
 </div>
 
 <%= end_form_tag %>

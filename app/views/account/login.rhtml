@@ -1,11 +1,14 @@
+
 <%= start_form_tag %>
 <div id="login">
+	<% if flash[:notice] %>
+	<div id="errorExplanation"><h2><%= flash[:notice] %></h2></div>
+	<% end %>
 	<label for="user_login">Login</label>
 	<%= text_field :user, :login %>
 	<label for="user_password">Password</label>
 	<%= password_field :user, :password %>
 	<label>&nbsp;</label>
-	<!--p id="signup_link"><%= link_to "Create an account", :controller=>"account", :action=>"signup" %></p-->
-	<%= submit_tag 'Log in' %>
+	<%= submit_tag 'Login' %> <%= link_to "Cancel", :controller=>"gallery", :action=>"list" %>
 </div>
 <%= end_form_tag %>
