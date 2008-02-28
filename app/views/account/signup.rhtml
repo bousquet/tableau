@@ -1,4 +1,4 @@
-<%= start_form_tag %>
+<% form_tag do %>
 <div id="login">
 
 <%= error_messages_for "user" %>
@@ -25,4 +25,4 @@
 <%= submit_tag 'Sign up' %> <%= link_to "Cancel", :controller=>"gallery", :action=>"list" %>
 </div>
 
-<%= end_form_tag %>
+<% end %>

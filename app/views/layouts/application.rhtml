@@ -7,8 +7,8 @@
 				<div id="admin">
 					<h2>Admin</h2>
 					<ul>
-						<li><%= link_to image_tag("images")+" New Album", :controller=>"albums", :action=>"new" %></li>
-		        <li><%= link_to image_tag("image_add")+" New Photo", :controller=>"gallery", :action=>"new" %></li>
+						<li><%= link_to image_tag("images.png")+" New Album", :controller=>"albums", :action=>"new" %></li>
+		        <li><%= link_to image_tag("image_add.png")+" New Photo", :controller=>"gallery", :action=>"new" %></li>
 						<li id="image_destroy"><%= link_to image_tag("trash.gif")+" Delete Photo", "#" %></li>
 		        <%= drop_receiving_element "image_destroy", 
 				          :update => "photos", :url => { :controller=>"gallery", :action=>"destroy" },
@@ -31,7 +31,7 @@
 				          :loading => "Element.show('album_spinner')",
 				          :complete => "Element.hide('album_spinner')" if logged_in? %>
 				  <% end %>
-				  <%= content_tag "li", link_to(image_tag("arrow_left")+" Back to gallery", :controller=>"gallery", :action=>"index") if current_page?(:controller=>"gallery", :action=>"album") %>
+				  <%= content_tag "li", link_to(image_tag("arrow_left.png")+" Back to gallery", :controller=>"gallery", :action=>"index") if current_page?(:controller=>"gallery", :action=>"album") %>
 				</ul>
 				<div id="album_spinner" style="display:none;clear:both"><%= image_tag "spinner.gif", :style=>"vertical-align:middle" %> Adding photo to album...</div>	
 				<p id="login_link"><%= logged_in? ? @curuser.full_name+" "+link_to("Logout", :controller=>"account", :action=>"logout") : link_to("Login", :controller=>"account", :action=>"login") %></p>
@@ -42,7 +42,7 @@
       <%= @content_for_layout %>
       <div style="clear:both"></div>
 			<div id="footer">
-				<p>Powered by <%= link_to "Tableau", "http://creativi.st/tableau" %></p>
+				<p>Powered by <%= link_to "Tableau", "http://github.com/bousquet/tableau/" %></p>
 			</div>
     </div>
   </body>

@@ -1,5 +1,5 @@
 
-<%= start_form_tag %>
+<% form_tag do %>
 <div id="login">
 	<% if flash[:notice] %>
 	<div id="errorExplanation"><h2><%= flash[:notice] %></h2></div>
@@ -11,4 +11,4 @@
 	<label>&nbsp;</label>
 	<%= submit_tag 'Login' %> <%= link_to "Cancel", :controller=>"gallery", :action=>"list" %>
 </div>
-<%= end_form_tag %>
+<% end %>

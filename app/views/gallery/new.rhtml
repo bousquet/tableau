@@ -3,12 +3,12 @@
 <div id="photos">
 <%= error_messages_for "photo" %>
 
-<%= start_form_tag nil, :multipart=>true %>
+<% form_for :photo, @photo, :html => {:multipart=>true} do %>
   <label>Title</label>
   <%= text_field "photo", "title" %>
   <label>Photo</label>
   <%= file_field_tag "file" %>
   <label>&nbsp;</label>
   <%= submit_tag "Upload" %> <%= link_to "Cancel", :controller=>"gallery", :action=>"list" %>
-<%= end_form_tag %>
+<% end %>
 </div>
