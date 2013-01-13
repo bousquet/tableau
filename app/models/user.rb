@@ -1,35 +1,9 @@
-# Sample schema:
-#   create_table "users", :force => true do |t|
-#     t.column "login",            :string, :limit => 40
-#     t.column "email",            :string, :limit => 100
-#     t.column "crypted_password", :string, :limit => 40
-#     t.column "salt",             :string, :limit => 40
-#     t.column "activation_code",  :string, :limit => 40 # only if you want
-#     t.column "activated_at",     :datetime             # user activation
-#     t.column "created_at",       :datetime
-#     t.column "updated_at",       :datetime
-#   end
-#
-# If you wish to have a mailer, run:
-#
-#   ./script/generate authenticated_mailer user
-# 
-# Be sure to add the observer to the form login controller:
-#
-#   class AccountController < ActionController::Base
-#     observer :user_observer
-#   end
-#
-# For extra credit: keep these two requires for 2-way reversible encryption
-# require 'openssl'
-# require 'base64'
-#
-require 'digest/sha1'
+require "digest/sha1"
 class User < ActiveRecord::Base
-  
+
   has_many :photos
   has_many :albums
-  
+
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -37,8 +11,8 @@ class User < ActiveRecord::Base
   validates_length_of       :login,    :within => 3..40
   validates_length_of       :email,    :within => 3..100
   validates_length_of       :password, :within => 4..40, :if => :password_required?
-  validates_presence_of     :login, :email, :first, :last
-  validates_presence_of     :password, 
+  validates_presence_of     :login, :email, :first_name, :last_name
+  validates_presence_of     :password,
                             :password_confirmation,
                             :if => :password_required?
   validates_confirmation_of :password, :if => :password_required?
@@ -64,56 +38,19 @@ class User < ActiveRecord::Base
   def encrypt(password)
     self.class.encrypt(password, salt)
   end
-  
+
   def full_name
-    self.first + " " + self.last
+    self.first_name + " " + self.last_name
   end
-  
+
   def is_admin?
     false
   end
 
-  # More extra credit for adding 2-way encryption.  Feel free to remove self.encrypt above if you use this
-  #
-  # # Encrypts some data with the salt.
-  # def self.encrypt(password, salt)
-  #   enc = OpenSSL::Cipher::Cipher.new('DES-EDE3-CBC')
-  #   enc.encrypt(salt)
-  #   data = enc.update(password)
-  #   Base64.encode64(data << enc.final)
-  # end
-  # 
-  # # getter method to decrypt password
-  # def password
-  #   unless @password
-  #     enc = OpenSSL::Cipher::Cipher.new('DES-EDE3-CBC')
-  #     enc.decrypt(salt)
-  #     text = enc.update(Base64.decode64(crypted_password))
-  #     @password = (text << enc.final)
-  #   end
-  #   @password
-  # rescue
-  #   nil
-  # end
 
-  # Uncomment these methods for user activation  These also help let the mailer know precisely when the user is activated.
-  # There's also a commented-out before hook above and a protected method below.
-  #
-  # The controller has a commented-out 'activate' action too.
-  #
-  # # Activates the user in the database.
-  # def activate
-  #   @activated = true
-  #   update_attributes(:activated_at => Time.now.utc, :activation_code => nil)
-  # end
-  # 
-  # # Returns true if the user has just been activated.
-  # def recently_activated?
-  #   @activated
-  # end
-  
   protected
-  # before filter 
+
+  # before filter
   def encrypt_password
     return unless password
     self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
@@ -124,8 +61,4 @@ class User < ActiveRecord::Base
     crypted_password.nil? or not password.blank?
   end
 
-  # If you're going to use activation, uncomment this too
-  #def make_activation_code
-  #  self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split('//').sort_by {rand}.join )
-  #end
 end

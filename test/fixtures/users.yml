@@ -1,5 +1,7 @@
 quentin:
   id: 1
+  first_name: Quentin
+  last_name: Tarantino
   login: quentin
   email: quentin@example.com
   salt: 62a636a58d0648eadf7410aa2e4444866174c96e
@@ -9,6 +11,8 @@ quentin:
   # activated_at: <%= 5.days.ago.to_s :db %> # only if you're activating new signups
 arthur:
   id: 2
+  first_name: Arthur
+  last_name: Franco
   login: arthur
   email: arthur@example.com
   salt: 55bc51360864c82dcd7ff4bcfec56a8d8e79e751

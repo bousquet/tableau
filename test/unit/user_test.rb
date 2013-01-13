@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.join(File.dirname(__FILE__), *%w[.. test_helper])
 
-class UserTest < Test::Unit::TestCase
+class UserTest < ActiveSupport::TestCase
   fixtures :users
 
   def test_should_create_user
@@ -43,6 +43,10 @@ class UserTest < Test::Unit::TestCase
 
   protected
   def create_user(options = {})
-    User.create({ :login => 'quire', :email => 'quire@example.com', :password => 'quire', :password_confirmation => 'quire' }.merge(options))
+    User.create({
+      :first_name => "Quire", :last_name => "Mucho",
+      :login => 'quire', :email => 'quire@example.com',
+      :password => 'quire', :password_confirmation => 'quire'
+    }.merge(options))
   end
 end

@@ -1,13 +1,5 @@
 class AccountController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  # To require logins, use:
-  #
-  #   before_filter :login_required                            # restrict all actions
-  #   before_filter :login_required, :only => [:edit, :update] # only restrict these actions
-  # 
-  # To skip this in a subclassed controller:
-  #
-  #   skip_before_filter :login_required
+  skip_before_filter :login_required
 
   # say something nice, you goof!  something sweet.
   def index
@@ -23,7 +15,7 @@ class AccountController < ApplicationController
     if current_user
       redirect_back_or_default(:controller => 'gallery', :action => 'index')
       flash[:notice] = "Logged in successfully"
-    else 
+    else
       flash[:notice] = "Incorrect Login/Password"
     end
   end
@@ -37,7 +29,7 @@ class AccountController < ApplicationController
       flash[:notice] = "Thanks for signing up!"
     end
   end
-  
+
   # Sample method for activating the current user
   #def activate
   #  @user = User.find_by_activation_code(params[:id])

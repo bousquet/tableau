@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.join(File.dirname(__FILE__), *%w[.. test_helper])
 
-class AlbumTest < Test::Unit::TestCase
+class AlbumTest < ActiveSupport::TestCase
   fixtures :albums
 
   # Replace this with your real tests.

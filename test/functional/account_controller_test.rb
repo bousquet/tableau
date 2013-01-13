@@ -1,33 +1,20 @@
-require File.dirname(__FILE__) + '/../test_helper'
-require 'account_controller'
+require File.join(File.dirname(__FILE__), *%w[.. test_helper])
 
-# Re-raise errors caught by the controller.
-class AccountController; def rescue_action(e) raise e end; end
-
-class AccountControllerTest < Test::Unit::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
-  include AuthenticatedTestHelper
-
+class AccountControllerTest < ActionController::TestCase
   fixtures :users
 
   def setup
-    @controller = AccountController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-    
-    # for testing action mailer
-    # @emails = ActionMailer::Base.deliveries 
-    # @emails.clear
+    login_as :quentin
   end
 
   def test_should_login_and_redirect
-    post :login, :login => 'quentin', :password => 'quentin'
+    post :login, :user => {:login => "quentin", :password => "quentin"}
     assert session[:user]
     assert_response :redirect
   end
 
   def test_should_fail_login_and_not_redirect
-    post :login, :login => 'quentin', :password => 'bad password'
+    post :login, :user => {:login => "quentin", :password => "bad password"}
     assert_nil session[:user]
     assert_response :success
   end
@@ -79,20 +66,20 @@ class AccountControllerTest < Test::Unit::TestCase
   end
 
   # Uncomment if you're activating new user accounts
-  # 
+  #
   # def test_should_activate_user
   #   assert_nil User.authenticate('arthur', 'arthur')
   #   get :activate, :id => users(:arthur).activation_code
   #   assert_equal users(:arthur), User.authenticate('arthur', 'arthur')
   # end
-  # 
+  #
   # def test_should_activate_user_and_send_activation_email
   #   get :activate, :id => users(:arthur).activation_code
   #   assert_equal 1, @emails.length
   #   assert(@emails.first.subject =~ /Your account has been activated/)
   #   assert(@emails.first.body    =~ /#{assigns(:user).login}, your account has been activated/)
   # end
-  # 
+  #
   # def test_should_send_activation_email_after_signup
   #   create_user
   #   assert_equal 1, @emails.length
@@ -104,7 +91,10 @@ class AccountControllerTest < Test::Unit::TestCase
 
   protected
   def create_user(options = {})
-    post :signup, :user => { :login => 'quire', :email => 'quire@example.com', 
-                             :password => 'quire', :password_confirmation => 'quire' }.merge(options)
+    post :signup, :user => {
+      :first_name => "Quire", :last_name => "Mucho",
+      :login => 'quire', :email => 'quire@example.com',
+      :password => 'quire', :password_confirmation => 'quire'
+    }.merge(options)
   end
 end

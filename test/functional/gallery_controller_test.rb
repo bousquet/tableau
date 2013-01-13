@@ -1,17 +1,6 @@
-require File.dirname(__FILE__) + '/../test_helper'
-require 'gallery_controller'
+require File.join(File.dirname(__FILE__), *%w[.. test_helper])
 
-# Re-raise errors caught by the controller.
-class GalleryController; def rescue_action(e) raise e end; end
-
-class GalleryControllerTest < Test::Unit::TestCase
-  def setup
-    @controller = GalleryController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
-
-  # Replace this with your real tests.
+class GalleryControllerTest < ActionController::TestCase
   def test_truth
     assert true
   end
