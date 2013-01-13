@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-  skip_before_filter :login_required
+  skip_before_filter :login_required, :only => [:index, :login]
 
   # say something nice, you goof!  something sweet.
   def index
@@ -29,16 +29,6 @@ class AccountController < ApplicationController
       flash[:notice] = "Thanks for signing up!"
     end
   end
-
-  # Sample method for activating the current user
-  #def activate
-  #  @user = User.find_by_activation_code(params[:id])
-  #  if @user and @user.activate
-  #    self.current_user = @user
-  #    redirect_back_or_default(:controller => '/account', :action => 'index')
-  #    flash[:notice] = "Your account has been activated."
-  #  end
-  #end
 
   def logout
     self.current_user = nil
