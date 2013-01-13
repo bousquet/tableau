@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: photos
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  title      :string(255)
+#  position   :integer
+#  created_at :datetime
+#  taken_at   :datetime
+#
+
 class Photo < ActiveRecord::Base
   
   belongs_to :user

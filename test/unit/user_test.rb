@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id               :integer          not null, primary key
+#  login            :string(255)
+#  email            :string(255)
+#  crypted_password :string(255)
+#  salt             :string(255)
+#  activation_code  :string(255)
+#  activated_at     :datetime
+#  created_at       :datetime
+#  updated_at       :datetime
+#  first_name       :string(255)
+#  last_name        :string(255)
+#
+
 require File.join(File.dirname(__FILE__), *%w[.. test_helper])
 
 class UserTest < ActiveSupport::TestCase

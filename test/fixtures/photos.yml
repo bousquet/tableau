@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: photos
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  title      :string(255)
+#  position   :integer
+#  created_at :datetime
+#  taken_at   :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 first:
   id: 1

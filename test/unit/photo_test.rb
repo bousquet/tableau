@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: photos
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  title      :string(255)
+#  position   :integer
+#  created_at :datetime
+#  taken_at   :datetime
+#
+
 require File.join(File.dirname(__FILE__), *%w[.. test_helper])
 
 class PhotoTest < ActiveSupport::TestCase
