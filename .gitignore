@@ -2,3 +2,5 @@ logs/*.log
 logs/*.pid
 db/*.db
 tmp/*/*
+database.yml
+log/*
