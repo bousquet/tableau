@@ -1,9 +1,6 @@
 
 <% form_tag do %>
 <div id="login">
-	<% if flash[:notice] %>
-	<div id="errorExplanation"><h2><%= flash[:notice] %></h2></div>
-	<% end %>
 	<label for="user_login">Login</label>
 	<%= text_field :user, :login %>
 	<label for="user_password">Password</label>

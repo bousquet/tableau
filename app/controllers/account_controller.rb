@@ -16,7 +16,7 @@ class AccountController < ApplicationController
       redirect_back_or_default(:controller => 'gallery', :action => 'index')
       flash[:notice] = "Logged in successfully"
     else
-      flash[:notice] = "Incorrect Login/Password"
+      flash.now[:error] = "Incorrect Login/Password"
     end
   end
 

@@ -5,7 +5,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>Powered by Tableau - Showcasing frozen moments</title>
 		<script type="text/javascript" language="javascript" charset="utf-8">
-		// <![CDATA[ 
+		// <![CDATA[
 			var loadingImage = '<%= image_path "loading.gif" -%>';
 			var closeButton = '<%= image_path "close.gif" -%>';
 		// ]]>
@@ -15,3 +15,9 @@
     <%= stylesheet_link_tag "gallery" %>
   </head>
   <body>
+  <% if flash[:notice] %>
+    <div id="flashNotice" class="flash"><h2><%= flash[:notice] %></h2></div>
+  <% elsif flash[:error] %>
+    <div id="flashError" class="flash"><h2><%= flash[:error] %></h2></div>
+  <% end %>
+

@@ -125,12 +125,12 @@ label {
 #lightboxDetails{
 	font-size: 0.8em;
 	padding-top: 0.4em;
-	}	
+	}
 #lightboxCaption{ float: left; }
 #keyboardMsg{ float: right; }
 #closeButton{ top: 5px; right: 5px; }
 
-#lightbox img{ border: none; clear: both;} 
+#lightbox img{ border: none; clear: both;}
 #overlay img{ border: none; }
 
 #overlay{ background-image: url(../images/overlay.png); }
@@ -208,6 +208,56 @@ label {
 }
 
 #errorExplanation ul {
+	margin-left:30px;
+	padding:0 0 20px;
+}
+
+
+.flash {
+	width:100%;
+	margin:10px 0 20px;
+}
+
+#flashError {
+  background:#C00;
+}
+
+#flashError h2 {
+  background:#C66 url(../images/alert.gif) no-repeat 10px 50%;
+  color: #fff;
+  border-top:3px solid #900;
+  border-bottom:3px solid #900;
+}
+
+#flashNotice {
+  background:#FFC;
+}
+
+#flashNotice h2 {
+  background:#FFC url(../images/notice.png) no-repeat 10px 50%;
+  color: #333;
+  border-top:3px solid #FF0;
+  border-bottom:3px solid #FF0;
+}
+
+
+.flash h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: .25em .25em .25em 35px;
+  font-size: 12px;
+  margin-top:0;
+}
+
+.flash p {
+  color: #333;
+  margin-bottom: 0;
+  padding: .5em 1em;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.flash ul {
 	margin-left:30px;
 	padding:0 0 20px;
 }
