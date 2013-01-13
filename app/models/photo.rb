@@ -10,6 +10,8 @@
 #  taken_at   :datetime
 #
 
+require "RMagick"
+
 class Photo < ActiveRecord::Base
 
   belongs_to :user
@@ -24,8 +26,8 @@ class Photo < ActiveRecord::Base
   THUMB_HEIGHT = 100
   THUMB_WIDTH = 100
 
-  UPLOAD_FOLDER = RAILS_ROOT + '/public/photos/'
-  WEB_FOLDER = '/photos/'
+  UPLOAD_FOLDER = Rails.root.join("public/photos/")
+  WEB_FOLDER = "/photos/"
   def to_url(size = :medium)
     return WEB_FOLDER + "#{id}_#{size.to_s}.jpg" if [:large, :medium, :thumbnail].include?(size)
     raise 'Bad size'
