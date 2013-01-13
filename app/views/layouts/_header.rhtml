@@ -15,9 +15,4 @@
     <%= stylesheet_link_tag "gallery" %>
   </head>
   <body>
-  <% if flash[:notice] %>
-    <div id="flashNotice" class="flash"><h2><%= flash[:notice] %></h2></div>
-  <% elsif flash[:error] %>
-    <div id="flashError" class="flash"><h2><%= flash[:error] %></h2></div>
-  <% end %>
-
+  <%= display_flash if flash[:notice] or flash[:error] %>
