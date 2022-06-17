@@ -14,7 +14,7 @@ GEM
     annotate (2.5.0)
       rake
     pg (0.14.1)
-    rack (1.1.4)
+    rack (1.1.6)
     rails (2.3.15)
       actionmailer (= 2.3.15)
       actionpack (= 2.3.15)
